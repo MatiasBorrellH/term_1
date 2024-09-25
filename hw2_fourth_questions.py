@@ -29,7 +29,7 @@ def filter_func (df: pd.DataFrame, df_column_name: str ,greater_than_value: int)
     return df_filtered
 
 # Creating a ratio function that creates a new column on a copy of the original data frame with the ratio between two selected columns.
-def ratio_func (df, df_column_name_1, df_column_name_2):
+def ratio_func (df: pd.DataFrame, df_column_name_1: str, df_column_name_2: str):
     df_ratio = df.copy()
     df_ratio[df_column_name_1 + '_to_' + df_column_name_2 + '_ratio'] = df_ratio[df_column_name_1] / df_ratio[df_column_name_2]
     return df_ratio
