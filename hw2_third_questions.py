@@ -25,7 +25,7 @@ def total_registered_cases(data, country):
     # if the country exists in the dictionary, the function will sum all cases in the specified country
     if country in data:
         return sum(data[country])
-    # if the country doesn´t exists in the dictionary, the function will return a message
+    # if the country doesn't exists in the dictionary, the function will return a message
     else: 
         return f"{country} doesn´t exists in the data"
 
@@ -64,17 +64,11 @@ total_registered_cases_per_country(data)
 
 # Parameters of the function: 1) The data structure described above.
 def country_with_most_cases(data):
-    # Create variables to store the maximum number of cases and the country with the higher number of cases
-    cases_max = 0
-    country_max = "xxx"
-    # As Ex 8), iterate over each country (key) and its list of cases (value)
-    for country, cases in data.items():
-        # Add the list of cases to obtain the total cases
-        total_cases = sum(cases)
-        # Compare if the current total number of cases is greater than the maximum recorded
-        if total_cases > cases_max:
-            cases_max = total_cases 
-            # If this happens, the new variable for the country will be replaced with the name of the respective country
-            country_max = country
+    # Create new dictionary using the function defined in Ex. 8.
+    sum_dict = total_registered_cases_per_country(data)
+    # Find the maximum using a lambda function
+    max_entry = max(sum_dict.items(), key=lambda item: item[1])
     # The function will return the country with most covid cases
-    return country_max
+    return max_entry
+
+                                                
